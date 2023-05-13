@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using SneakerMarket.Api.Models;
 
-namespace SneakerMarket.Api.Models;
+namespace SneakerMarket.Api;
 
-public partial class SneakerMarkerDbContext : DbContext
+public partial class ApplicationContext : DbContext
 {
-    public SneakerMarkerDbContext()
-    {
-    }
-
-    public SneakerMarkerDbContext(DbContextOptions<SneakerMarkerDbContext> options)
+    public ApplicationContext(DbContextOptions options)
         : base(options)
     {
     }
@@ -36,10 +31,6 @@ public partial class SneakerMarkerDbContext : DbContext
     public virtual DbSet<ShoesAdditionalInfo> ShoesAdditionalInfos { get; set; }
 
     public virtual DbSet<ShoesMain> ShoesMains { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=VICTOR\\MSSQLSERVER2019;Initial Catalog=SneakerMarkerDB;Integrated Security=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -221,9 +212,5 @@ public partial class SneakerMarkerDbContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_ShoesMain_ShoesMain");
         });
-
-        OnModelCreatingPartial(modelBuilder);
     }
-
-    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace SneakerMarket.Api.Models;
+﻿namespace SneakerMarket.Api.Models;
 
 public partial class Account
 {

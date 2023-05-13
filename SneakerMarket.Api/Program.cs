@@ -1,38 +1,48 @@
 using SneakerMarket.Api;
 
-var builder = WebApplication.CreateBuilder(args);
+namespace api
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            var builder = WebApplication.CreateBuilder(args);
 
-var services = builder.Services;
+            var services = builder.Services;
 
-//services.ConfigureSqlServerContext(builder.Configuration);
+            services.ConfigureSqlServerContext(builder.Configuration);
 
-//services.ConfigureCorsPolicy();
+            services.ConfigureCorsPolicy();
 
-//services.ConfigureRepositoryWrapper();
+            services.ConfigureRepositoryWrapper();
 
-//services.AddAutoMapper(typeof(Program));
+            services.AddAutoMapper(typeof(Program));
 
-services.ConfigureCorsPolicy();
+            services.AddControllers();
 
-services.AddControllers();
+            services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
 
-services.AddEndpointsApiExplorer();
+            var app = builder.Build();
 
-var app = builder.Build();
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
+            else
+                app.UseHsts();
 
-if (app.Environment.IsDevelopment())
-    app.UseDeveloperExceptionPage();
-else
-    app.UseHsts();
+            app.UseHttpsRedirection();
 
-app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
 
-app.UseHttpsRedirection();
+            app.UseAuthorization();
 
-app.UseAuthorization();
+            app.MapControllers();
 
-app.MapControllers();
-
-//app.MigrateDatabase();
-
-app.Run();
+            app.Run();
+        }
+    }
+}
