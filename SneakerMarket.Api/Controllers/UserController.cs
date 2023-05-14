@@ -162,12 +162,12 @@ namespace SneakerMarket.Api.Controllers
             return Ok("user deleted");
         }
 
-        //[HttpGet]
-        //public async Task<IActionResult> GetAllUserAccounts(string email)
-        //{
-        //    var accounts = await _wrapperRepository.Account.GetAllAccountsAsync();
+        [HttpGet]
+        public async Task<IActionResult> GetAllUserAccounts(string email)
+        {
+            var accounts = await _wrapperRepository.Account.GetAllAccountsAsync();
 
-        //    return Ok(accounts);
-        //}
+            return Ok(accounts);
+        }
     }
 }

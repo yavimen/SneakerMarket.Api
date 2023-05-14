@@ -15,6 +15,8 @@ public partial class Feedback
 
     public Guid CustomerOrderId { get; set; }
 
+    public DateTime? Date { get; set; }
+
     public virtual Contact CustomerContact { get; set; } = null!;
 
     public virtual CustomerOrder CustomerOrder { get; set; } = null!;

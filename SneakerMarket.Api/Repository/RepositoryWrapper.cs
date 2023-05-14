@@ -1,5 +1,6 @@
 ﻿using Contracts;
 using SneakerMarket.Api;
+using SneakerMarket.Api.Models;
 using SneakerMarket.Api.Repository.Contracts;
 
 namespace Repository
@@ -7,8 +8,10 @@ namespace Repository
     public class RepositoryWrapper : IRepositoryWrapper
     {
         protected IAccountRepository? _account;
+        protected IAccountRoleRepository? _accountRole;
         protected IContactRepository? _contact;
         protected ICustomerInfoRepository? _customerInfo;
+        protected IFeedbackRepository? _feedback;
         protected ApplicationContext _context;
 
         public RepositoryWrapper(ApplicationContext context)
@@ -52,6 +55,29 @@ namespace Repository
                     _customerInfo = new CustomerInfoRepository(_context);
                 }
                 return _customerInfo;
+            }
+        }
+        public IAccountRoleRepository AccountRole 
+        {
+            get
+            {
+                if (_accountRole == null)
+                {
+                    _accountRole = new AccountRoleRepository(_context);
+                }
+                return _accountRole;
+            }
+        }
+    
+        public IFeedbackRepository Feedback
+        {
+            get
+            {
+                if (_feedback == null)
+                {
+                    _feedback = new FeedbackRepository(_context);
+                }
+                return _feedback;
             }
         }
     }

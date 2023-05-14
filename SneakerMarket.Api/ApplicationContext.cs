@@ -32,8 +32,11 @@ public partial class ApplicationContext : DbContext
 
     public virtual DbSet<ShoesMain> ShoesMains { get; set; }
 
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.UseCollation("Ukrainian_100_CI_AS");
+
         modelBuilder.Entity<Account>(entity =>
         {
             entity.ToTable("Account");
@@ -146,6 +149,7 @@ public partial class ApplicationContext : DbContext
             entity.ToTable("Feedback");
 
             entity.Property(e => e.Id).ValueGeneratedNever();
+            entity.Property(e => e.Date).HasColumnType("date");
             entity.Property(e => e.Feedback1)
                 .HasMaxLength(2000)
                 .IsUnicode(false)

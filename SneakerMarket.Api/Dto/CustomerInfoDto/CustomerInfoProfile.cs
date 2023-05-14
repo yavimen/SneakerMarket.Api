@@ -3,9 +3,9 @@ using SneakerMarket.Api.Dto.Contact;
 
 namespace SneakerMarket.Api.Dto.CustomerInfo
 {
-    public class CustomerInfoProfile: Profile
+    public class FeedbackDtoProfile: Profile
     {
-        public CustomerInfoProfile()
+        public FeedbackDtoProfile()
         {
             CreateMap<CreateUserDto, Models.CustomerInfo>()
             .ForMember(m => m.City, opt => opt.MapFrom(x => x.City))

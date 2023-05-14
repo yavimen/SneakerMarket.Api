@@ -6,7 +6,7 @@ namespace Contracts
     {
         Task<IEnumerable<Account>> GetAllAccountsAsync();
 
-        Task<Account> GetAccountByEmailWithDetailsAsync(string email);
+        Task<Account?> GetAccountByEmailWithDetailsAsync(string email);
 
         Task<Account?> GetAccountByIdAsync(Guid id);
 
