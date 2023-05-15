@@ -12,6 +12,7 @@ namespace Repository
         protected IContactRepository? _contact;
         protected ICustomerInfoRepository? _customerInfo;
         protected IFeedbackRepository? _feedback;
+        protected ICategoryRepository? _category;
         protected ApplicationContext _context;
 
         public RepositoryWrapper(ApplicationContext context)
@@ -78,6 +79,18 @@ namespace Repository
                     _feedback = new FeedbackRepository(_context);
                 }
                 return _feedback;
+            }
+        }
+    
+        public ICategoryRepository Category
+        {
+            get
+            {
+                if (_category == null)
+                {
+                    _category = new CategoryRepository(_context);
+                }
+                return _category;
             }
         }
     }

@@ -9,6 +9,7 @@ namespace Contracts
         ICustomerInfoRepository CustomerInfo { get; }
         IAccountRoleRepository AccountRole { get; }
         IFeedbackRepository Feedback { get; }
+        ICategoryRepository Category { get; }
         Task SaveAsync();
     }
 }
