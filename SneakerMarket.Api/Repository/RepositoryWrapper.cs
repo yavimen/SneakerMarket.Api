@@ -13,6 +13,8 @@ namespace Repository
         protected ICustomerInfoRepository? _customerInfo;
         protected IFeedbackRepository? _feedback;
         protected ICategoryRepository? _category;
+        protected IShoesMainRepository? _shoesMain;
+        protected IShoesAdditionalInfoRepository? _shoesAdditionalInfo;
         protected ApplicationContext _context;
 
         public RepositoryWrapper(ApplicationContext context)
@@ -91,6 +93,30 @@ namespace Repository
                     _category = new CategoryRepository(_context);
                 }
                 return _category;
+            }
+        }
+    
+        public IShoesMainRepository ShoesMain
+        {
+            get
+            {
+                if (_shoesMain == null)
+                {
+                    _shoesMain = new ShoesMainRepository(_context);
+                }
+                return _shoesMain;
+            }
+        }
+    
+        public IShoesAdditionalInfoRepository ShoesAdditionalInfo
+        {
+            get
+            {
+                if (_shoesAdditionalInfo == null)
+                {
+                    _shoesAdditionalInfo = new ShoesAdditionalInfoRepository(_context);
+                }
+                return _shoesAdditionalInfo;
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using SneakerMarket.Api.Repository.Contracts;
+﻿using Repository;
+using SneakerMarket.Api.Repository.Contracts;
 
 namespace Contracts
 {
@@ -10,6 +11,8 @@ namespace Contracts
         IAccountRoleRepository AccountRole { get; }
         IFeedbackRepository Feedback { get; }
         ICategoryRepository Category { get; }
+        IShoesMainRepository ShoesMain { get; }
+        IShoesAdditionalInfoRepository ShoesAdditionalInfo { get; }
         Task SaveAsync();
     }
 }
