@@ -17,6 +17,7 @@ namespace Repository
         protected IShoesAdditionalInfoRepository? _shoesAdditionalInfo;
         protected IContractRepository? _contract;
         protected ICustomerOrderRepository? _customerOrder;
+        protected IOrderShoesInfoMapRepository? _orderShoesInfoMap;
         protected ApplicationContext _context;
 
         public RepositoryWrapper(ApplicationContext context)
@@ -142,6 +143,17 @@ namespace Repository
                     _customerOrder = new CustomerOrderRepository(_context);
                 }
                 return _customerOrder;
+            }
+        }
+        public IOrderShoesInfoMapRepository OrderShoesInfoMap
+        {
+            get
+            {
+                if (_orderShoesInfoMap == null)
+                {
+                    _orderShoesInfoMap = new OrderShoesInfoMapRepository(_context);
+                }
+                return _orderShoesInfoMap;
             }
         }
     }
