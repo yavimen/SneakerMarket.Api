@@ -7,9 +7,11 @@ public partial class CustomerOrder
 {
     public Guid Id { get; set; }
 
-    public string CustomerAccountId { get; set; } = null!;
+    public Guid CustomerAccountId { get; set; }
 
     public DateTime DateStamp { get; set; }
+
+    public virtual Account CustomerAccount { get; set; } = null!;
 
     public virtual ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();
 

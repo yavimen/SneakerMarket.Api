@@ -14,6 +14,7 @@ namespace Contracts
         IShoesMainRepository ShoesMain { get; }
         IShoesAdditionalInfoRepository ShoesAdditionalInfo { get; }
         IContractRepository Contract { get; }
+        ICustomerOrderRepository CustomerOrder { get; }
         Task SaveAsync();
     }
 }

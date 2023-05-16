@@ -16,6 +16,7 @@ namespace Repository
         protected IShoesMainRepository? _shoesMain;
         protected IShoesAdditionalInfoRepository? _shoesAdditionalInfo;
         protected IContractRepository? _contract;
+        protected ICustomerOrderRepository? _customerOrder;
         protected ApplicationContext _context;
 
         public RepositoryWrapper(ApplicationContext context)
@@ -121,7 +122,7 @@ namespace Repository
             }
         }
     
-        public IContractRepository ContractRepository
+        public IContractRepository Contract
         {
             get
             {
@@ -130,6 +131,17 @@ namespace Repository
                     _contract = new ContractRepository(_context);
                 }
                 return _contract;
+            }
+        }
+        public ICustomerOrderRepository CustomerOrder
+        {
+            get
+            {
+                if (_customerOrder == null)
+                {
+                    _customerOrder = new CustomerOrderRepository(_context);
+                }
+                return _customerOrder;
             }
         }
     }

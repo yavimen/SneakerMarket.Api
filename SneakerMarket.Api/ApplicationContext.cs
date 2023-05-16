@@ -138,10 +138,12 @@ public partial class ApplicationContext : DbContext
             entity.ToTable("CustomerOrder");
 
             entity.Property(e => e.Id).ValueGeneratedNever();
-            entity.Property(e => e.CustomerAccountId)
-                .HasMaxLength(50)
-                .IsUnicode(false);
             entity.Property(e => e.DateStamp).HasColumnType("date");
+
+            entity.HasOne(d => d.CustomerAccount).WithMany(p => p.CustomerOrders)
+                .HasForeignKey(d => d.CustomerAccountId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_CustomerOrder_Account");
         });
 
         modelBuilder.Entity<Feedback>(entity =>

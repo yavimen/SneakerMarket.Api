@@ -1,4 +1,7 @@
-﻿namespace SneakerMarket.Api.Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace SneakerMarket.Api.Models;
 
 public partial class Account
 {
@@ -13,6 +16,8 @@ public partial class Account
     public virtual ICollection<Contact> Contacts { get; set; } = new List<Contact>();
 
     public virtual CustomerInfo? CustomerInfo { get; set; }
+
+    public virtual ICollection<CustomerOrder> CustomerOrders { get; set; } = new List<CustomerOrder>();
 
     public virtual AccountRole Role { get; set; } = null!;
 }
