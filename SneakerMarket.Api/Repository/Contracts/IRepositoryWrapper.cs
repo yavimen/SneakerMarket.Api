@@ -13,6 +13,7 @@ namespace Contracts
         ICategoryRepository Category { get; }
         IShoesMainRepository ShoesMain { get; }
         IShoesAdditionalInfoRepository ShoesAdditionalInfo { get; }
+        IContractRepository Contract { get; }
         Task SaveAsync();
     }
 }

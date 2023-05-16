@@ -15,6 +15,7 @@ namespace Repository
         protected ICategoryRepository? _category;
         protected IShoesMainRepository? _shoesMain;
         protected IShoesAdditionalInfoRepository? _shoesAdditionalInfo;
+        protected IContractRepository? _contract;
         protected ApplicationContext _context;
 
         public RepositoryWrapper(ApplicationContext context)
@@ -117,6 +118,18 @@ namespace Repository
                     _shoesAdditionalInfo = new ShoesAdditionalInfoRepository(_context);
                 }
                 return _shoesAdditionalInfo;
+            }
+        }
+    
+        public IContractRepository ContractRepository
+        {
+            get
+            {
+                if (_contract == null)
+                {
+                    _contract = new ContractRepository(_context);
+                }
+                return _contract;
             }
         }
     }
