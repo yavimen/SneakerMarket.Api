@@ -9,7 +9,7 @@ namespace Contracts
 
         Task<CustomerOrder?> GetCustomerOrderByIdAsync(Guid id);
 
-        Task<IEnumerable<CustomerOrder>> GetAllCustomerOrdersWithDetailsAsync(Guid id);
+        Task<IEnumerable<CustomerOrder>> GetAllCustomerOrdersWithDetailsAsync(Guid customerAccountId);
 
         void CreateCustomerOrder(CustomerOrder customerOrder);
 
