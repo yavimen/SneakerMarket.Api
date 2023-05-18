@@ -3,6 +3,7 @@ using Contracts;
 using Microsoft.AspNetCore.Mvc;
 using SneakerMarket.Api.Dto;
 using SneakerMarket.Api.Dto.Account;
+using SneakerMarket.Api.Dto.AccountDto;
 using SneakerMarket.Api.Dto.Contact;
 using SneakerMarket.Api.Models;
 
@@ -28,6 +29,24 @@ namespace SneakerMarket.Api.Controllers
             if (account == null)
             {
                 return NotFound();
+            }
+
+            return Ok(account);
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> GetUserAccount([FromBody] AccountLoginDto loginDto)
+        {
+            var account = await _wrapperRepository.Account.GetAccountByEmailAsync(loginDto.Email);
+
+            if (account == null)
+            {
+                return NotFound("User not found");
+            }
+
+            if (loginDto.Password != account.Password) 
+            {
+                return BadRequest("Wrong password");
             }
 
             return Ok(account);
